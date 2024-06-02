@@ -1,11 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './components/App';
+import StorePage from './components/StorePage';
+import SingleProductPage from './components/SingleProductPage';
+import ShoppingCartPage from './components/ShoppingCartPage';
+import CheckoutFormPage from './components/CheckoutFormPage';
+import NotFoundPage from './components/NotFoundPage';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import './styles.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function Main() {
+  return (
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/store" component={StorePage} />
+        <Route exact path="/product/:id" component={SingleProductPage} />
+        <Route exact path="/cart" component={ShoppingCartPage} />
+        <Route exact path="/checkout" component={CheckoutFormPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </Router>
+  );
+};
+
+ReactDOM.render(<Main />, document.getElementById('root'));
