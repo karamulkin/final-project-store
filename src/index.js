@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './components/App';
 import StorePage from './components/StorePage';
@@ -15,16 +15,21 @@ function Main() {
   return (
     <Router>
       <Header />
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/store" component={StorePage} />
-        <Route exact path="/product/:id" component={SingleProductPage} />
-        <Route exact path="/cart" component={ShoppingCartPage} />
-        <Route exact path="/checkout" component={CheckoutFormPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <div className="content">
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route exact path="/store" component={StorePage} />
+          <Route exact path="/product/:id" component={SingleProductPage} />
+          <Route exact path="/cart" component={ShoppingCartPage} />
+          <Route exact path="/checkout" component={CheckoutFormPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
+      <Footer />
     </Router>
   );
 };
 
-ReactDOM.render(<Main />, document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<Main />);

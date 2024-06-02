@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
 const StorePage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetch('https://dummyjson.com/products')
@@ -12,11 +13,19 @@ const StorePage = () => {
             setProducts(data.products);
             setLoading(false);
         })
-        .catch(error => console.error('Error fetching products', error));
-    }, []);
+        .catch(error => {
+            console.error('Error fetching products', error);
+            setError('Failed to fetch products');
+            setLoading(false);
+        });
+}, []);
 
     if (loading) {
         return <div>Loading...</div>
+    }
+
+    if (error) {
+        return <div>{error}</div>;
     }
 
 
