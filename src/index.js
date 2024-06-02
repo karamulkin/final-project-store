@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from './components/App';
 import StorePage from './components/StorePage';
 import SingleProductPage from './components/SingleProductPage';
@@ -16,14 +16,14 @@ function Main() {
     <Router>
       <Header />
       <div className="content">
-        <Switch>
-          <Route exact path="/" component={App} />
-          <Route exact path="/store" component={StorePage} />
-          <Route exact path="/product/:id" component={SingleProductPage} />
-          <Route exact path="/cart" component={ShoppingCartPage} />
-          <Route exact path="/checkout" component={CheckoutFormPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/store" element={<StorePage />} />
+          <Route path="/product/:id" element={<SingleProductPage />} />
+          <Route path="/cart" element={<ShoppingCartPage />} />
+          <Route path="/checkout" element={<CheckoutFormPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </div>
       <Footer />
     </Router>
