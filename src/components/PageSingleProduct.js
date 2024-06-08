@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const SingleProductPage = ({ match }) => {
+export const PageSingleProduct = ({ match }) => {
     const productId = match.params.id;
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -29,5 +29,3 @@ const SingleProductPage = ({ match }) => {
         </div>
     );
 }
-
-export default SingleProductPage;
