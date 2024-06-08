@@ -40,7 +40,7 @@ export const PageStore = () => {
                         <p>{product.price}</p>
                         <p>Rating: {product.rating}</p>
                         <button>Add to Cart</button>
-                        <Link to={`/product/${product.id}`}>View details</Link>
+                        <Link to={`/singleproduct/${product.id}`}>View details</Link>
                     </div>
                 ))}
             </div>

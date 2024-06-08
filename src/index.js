@@ -6,4 +6,3 @@ import { App } from "./components/App";
 const root = createRoot(document.querySelector("#store"));
 
 root.render(<App />);
-console.log(root)

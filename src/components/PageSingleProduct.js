@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-export const PageSingleProduct = ({ match }) => {
-    const productId = match.params.id;
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
+export async function loader({ params }) {
+    const response = await fetch(`https://dummyjson.com/products/${params.productId}`);
+    const product = await response.json();
+    return { product };
+}
 
-    useEffect(() => {
-        fetch(`https://dummyjson.com/products/${productId}`)
-        .then(response => response.json())
-        .then(data => {
-            setProduct(data);
-            setLoading(false);
-        })
-        .catch(error => console.error('Error fetching product:', error));
-    }, [productId]);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+export const PageSingleProduct = () => {
+    const { product } = useLoaderData();
 
     return (
         <div>
