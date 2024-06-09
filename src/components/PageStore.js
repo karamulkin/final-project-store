@@ -20,6 +20,20 @@ export const PageStore = () => {
         });
 }, []);
 
+const addToCart = (product) => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const existingItem = cartItems.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cartItems.push({...product, quantity: 1 });
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    alert(`${product.title} added to cart`);
+};
+
     if (loading) {
         return <div>Loading...</div>
     }
@@ -39,7 +53,7 @@ export const PageStore = () => {
                         <h3>{product.title}</h3>
                         <p>{product.price}</p>
                         <p>Rating: {product.rating}</p>
-                        <button>Add to Cart</button>
+                        <button onClick={() => addToCart(product)}>Add to Cart</button>
                         <Link to={`/singleproduct/${product.id}`}>View details</Link>
                     </div>
                 ))}

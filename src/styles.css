@@ -1,8 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
+    background: transparent; /* Make it white if you need */
+    padding: 0 24px;
     margin: 0;
-    padding: 0;
-}
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: fantasy;
+  }
 
 header {
     background-color: #d70808;
@@ -14,3 +18,7 @@ footer {
     background-color: #333;
     color: white;
 }
+
+/* .App {
+    color: #72a24d;
+  } */
