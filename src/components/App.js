@@ -6,8 +6,9 @@ import { PageContainer } from "./PageContainer";
 import { PageHome } from "./PageHome.js";
 import { PageNotFound } from "./PageNotFound.js";
 import { PageShoppingCart } from "./PageShoppingCart.js";
-import { PageSingleProduct, loader as productLoader } from "./PageSingleProduct.js";
-import { PageStore } from "./PageStore.js";
+import { PageSingleProduct } from "./PageSingleProduct.js";
+import { StoreProvider } from "./StoreLogic.js";
+import { PageStore } from "./PageStore.js"
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,6 @@ const router = createBrowserRouter([
       {
         path: "/singleproduct/:productId",
         element: <PageSingleProduct />,
-        loader: productLoader,
       },
       {
         path: "/store",
@@ -42,8 +42,8 @@ const router = createBrowserRouter([
 
 export const App = () => {
   return (
-    <div>
+    <StoreProvider>
       <RouterProvider router={router} />
-    </div>
+    </StoreProvider>
   );
 };
