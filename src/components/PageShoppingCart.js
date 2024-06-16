@@ -8,8 +8,12 @@ export const PageShoppingCart = () => {
     return (
         <div>
             <div>
-                <Link to="/store">Go back to Store</Link>
-                <Link to="/checkout">Proceed to Checkout</Link>
+                <Link to="/store">
+                    <button>Go back to Store</button>
+                </Link>
+                <Link to="/checkout">
+                    <button>Proceed to Checkout</button>
+                </Link>
             </div>
             <h1>ShoppingCart</h1>
             <ul>
@@ -19,7 +23,11 @@ export const PageShoppingCart = () => {
 
                     return (
                         <li key={id}>
-                            {productData.title} amount {amount}{" "}
+                            {productData.title} price: {productData.price} amount: {amount}{" "}
+                            <img src={productData.thumbnail} alt={productData.title} />
+                            <Link to={`/singleproduct/${productData.id}`}>
+                                <button>View more</button>
+                            </Link>
                             <button onClick={() => removeFromCart(id, amount)}>
                                 remove 1 item
                             </button>

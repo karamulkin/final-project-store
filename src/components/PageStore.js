@@ -8,15 +8,17 @@ export const PageStore = () => {
     return (
         <div>
             <div>
-                <Link to="/cart">Go to Cart</Link>
+                <Link to="/cart">
+                    <button>Go to Cart</button>
+                </Link>
             </div>
-            <h1>Our products</h1>
+            <h1>Products in our store</h1>
             <ul>
                 {products.map(product => {
                     return (
                         <div key={product.id}>
                             <img src={product.thumbnail} alt={product.title} />
-                            {product.title}{" "}
+                            {product.title}{" "}, price: {product.price}
                             <button onClick={() => addToCart(product.id)}>Add to cart</button>
                             <Link to={`/singleproduct/${product.id}`}>
                                 <button>View more</button>
