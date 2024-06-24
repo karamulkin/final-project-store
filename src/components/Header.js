@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { StoreContext } from './StoreLogic';
 
 export const Header  = () => {
-    const { cart } = useContext(StoreContext);
+    const { cart, products, calculateCartTotals } = useContext(StoreContext);
 
-    const totalQuantity = cart.reduce((sum, item) => sum + item.amount, 0);
+    const { totalQuantity } = calculateCartTotals(cart, products);
 
     return (
         <header>

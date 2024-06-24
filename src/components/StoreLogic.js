@@ -71,6 +71,16 @@ export const StoreProvider = ({ children }) => {
         fetchProducts();
     }, []);
 
+    const calculateCartTotals = (cart, products) => {
+        const totalQuantity = cart.reduce((sum, item) => sum + item.amount, 0);
+        const totalPriceProducts = cart.reduce((sum, item) => {
+            const product = products.find(product => product.id === item.id);
+            const price = product?.price || 0;
+            return sum + (price * item.amount);
+        }, 0);
+        return { totalQuantity, totalPriceProducts };
+    }
+
     const storeContext = useMemo(() => {
         return {
             cart,
@@ -80,6 +90,7 @@ export const StoreProvider = ({ children }) => {
             removeFromCart,
             cleanCart,
             fetchProducts,
+            calculateCartTotals,
         };
     }, [cart, products]);
 
