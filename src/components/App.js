@@ -8,7 +8,8 @@ import { PageNotFound } from "./PageNotFound.js";
 import { PageShoppingCart } from "./PageShoppingCart.js";
 import { PageSingleProduct } from "./PageSingleProduct.js";
 import { StoreProvider } from "./StoreLogic.js";
-import { PageStore } from "./PageStore.js"
+import { PageStore } from "./PageStore.js";
+import { PageOrderAccepted } from "./PageOrderAccepted.js"
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <PageShoppingCart />,
+      },
+      {
+        path:"/order-accepted",
+        element: <PageOrderAccepted />,
       },
     ],
   },

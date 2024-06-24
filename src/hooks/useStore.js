@@ -1,6 +1,10 @@
 import { useContext } from 'react';
 import { StoreContext } from '../components/StoreLogic';
+import { useNavigate } from 'react-router-dom'
 
 export const useStore = () => {
-    return useContext(StoreContext);
+    const store = useContext(StoreContext);
+    const navigate = useNavigate();
+
+    return { ...store, navigate }
 };

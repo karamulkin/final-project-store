@@ -20,18 +20,18 @@ export const PageCheckoutForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form Data Submitted:', formData);
-        alert('Order placed successfully!');
-    };
-
-    const { products, cart, calculateCartTotals } = useStore();
+    const { products, cart, calculateCartTotals, cleanCart, navigate } = useStore();
     const deliveryFee = 5;
 
     const { totalQuantity, totalPriceProducts } = calculateCartTotals(cart, products);
     const totalPrice = totalPriceProducts + deliveryFee;
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form Data Submitted:', formData);
+        cleanCart();
+        navigate('/order-accepted');
+    };
 
     return (
         <div>
