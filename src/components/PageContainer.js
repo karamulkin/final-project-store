@@ -6,9 +6,9 @@ import { Footer } from "./Footer";
 
 export const PageContainer = () => {
     return (
-        <div>
+        <div className="page-container">
             <Header />
-            <div>
+            <div className="content">
                 <Outlet />
             </div>
             <Footer />

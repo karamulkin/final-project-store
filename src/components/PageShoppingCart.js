@@ -19,7 +19,7 @@ export const PageShoppingCart = () => {
             </div>
             <h1>ShoppingCart</h1>
             <ul>
-                {products.length &&
+                {products.length > 0 &&
                 cart.map(({ id, amount }) => {
                     const productData = products.find(product => id === product.id);
 
@@ -44,9 +44,13 @@ export const PageShoppingCart = () => {
                 <p>Total price: €{totalPrice}</p>
             </div>
             <div>
-            <Link to="/checkout">
-                <button>Proceed to Checkout</button>
-            </Link>
+                {totalQuantity > 0? (
+                    <Link to="/checkout">
+                        <button>Proceed to Checkout</button>
+                    </Link>
+                ) : (
+                    <button disabled>Proceed to Checkout</button>
+                )}
             </div>
         </div>
     );
