@@ -1,0 +1,22 @@
+.header {
+    background-color: beige;
+    color: blue;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.nav {
+
+}
+
+.navUl {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navLi {
+    display: inline-block;
+    margin-right: 20px;
+}
+  
