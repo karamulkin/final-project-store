@@ -7,7 +7,7 @@ import styles from './PageContainer.module.css';
 
 export const PageContainer = () => {
     return (
-        <div className={styles.PageContainer}>
+        <div className={styles.pageContainer}>
             <Header />
             <div className={styles.content}>
                 <Outlet />
